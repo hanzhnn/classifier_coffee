@@ -15,10 +15,7 @@ def load_model_from_url():
     model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.h5"
     model_path = "downloaded_model.h5"
 
-
-    if os.path.exists(model_path):
-        os.remove(model_path)
-
+    # If the model doesn't exist locally, download it
     if not os.path.exists(model_path):
         with st.spinner("Downloading model from Hugging Face..."):
             r = requests.get(model_url, stream=True)
@@ -26,7 +23,8 @@ def load_model_from_url():
                 for chunk in r.iter_content(chunk_size=8192):
                     if chunk:
                         f.write(chunk)
-     return tf.keras.models.load_model("downloaded_model.h5")
+
+    return tf.keras.models.load_model(model_path)
 
 
 # === Load model ===
