@@ -24,7 +24,7 @@ def load_model_from_url():
                     if chunk:
                         f.write(chunk)
 
-    return tf.keras.models.load_model(model_path, compile=False)
+    return tf.keras.models.load_model("downloaded_model.h5", compile=False)
 
 
 # === Load model ===
