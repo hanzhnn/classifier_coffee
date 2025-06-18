@@ -12,8 +12,11 @@ import requests
 
 @st.cache_resource
 def load_model_from_url():
-    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/blob/main/coffee_leaf_model.keras"
+    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
     model_path = "downloaded_model.keras"
+
+    if os.path.exists(model_path):
+        os.remove(model_path)
 
     if not os.path.exists(model_path):
         with st.spinner("Downloading model from Hugging Face..."):
