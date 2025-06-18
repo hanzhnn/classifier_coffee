@@ -12,8 +12,9 @@ import requests
 
 @st.cache_resource
 def load_model_from_url():
-    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
-    model_path = "downloaded_model.keras"
+    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.h5"
+    model_path = "downloaded_model.h5"
+
 
     if os.path.exists(model_path):
         os.remove(model_path)
@@ -25,7 +26,7 @@ def load_model_from_url():
                 for chunk in r.iter_content(chunk_size=8192):
                     if chunk:
                         f.write(chunk)
-    return tf.keras.models.load_model(model_path)
+     return tf.keras.models.load_model("downloaded_model.h5")
 
 
 # === Load model ===
