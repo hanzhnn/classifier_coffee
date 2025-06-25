@@ -43,7 +43,7 @@ st.markdown("""
 # Toggle dark mode
 dark_mode = st.toggle("🌙 Dark Mode")
 if dark_mode:
-    st.markdown("<style>body, .stApp { background-color: #1e1e1e; color: #f5f0e6; }</style>", unsafe_allow_html=True)
+    st.markdown("<style>body, .stApp { background-color: #8f7339; color: #f5f0e6; }</style>", unsafe_allow_html=True)
 
 # Animation
 st.markdown("### 🚀 Upload a coffee leaf image to classify and visualize disease region")
