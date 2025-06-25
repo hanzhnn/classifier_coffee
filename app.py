@@ -4,10 +4,26 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import cv2
 import os
+import requests
 from keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from PIL import Image
 import matplotlib.cm as cm
+
+@st.cache_resource
+def load_model_from_url():
+    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
+    model_path = "coffee_leaf_model.keras"
+    if not os.path.exists(model_path):
+        with requests.get(model_url, stream=True) as r:
+            with open(model_path, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+    return tf.keras.models.load_model(model_path)
+
+model = load_model_from_url()
+class_names = ['Healthy', 'Rust', 'Phoma', 'Cercospora', 'Miner']
+
 
 # Set Streamlit page config
 st.set_page_config(
