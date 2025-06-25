@@ -24,7 +24,7 @@ st.markdown("""
             color: #3e2723;
         }
         .stApp {
-            background-color: #f5f0e6;
+            background-color: #dfcfaf;
             font-family: 'Segoe UI', sans-serif;
         }
         h1, h2, h3, .stMarkdown {
@@ -34,7 +34,7 @@ st.markdown("""
             padding-top: 2rem;
         }
         .dark-mode {
-            background-color: #1e1e1e !important;
+            background-color: #584723 !important;
             color: #f5f0e6 !important;
         }
     </style>
