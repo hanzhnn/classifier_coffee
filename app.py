@@ -34,7 +34,7 @@ st.markdown("""
             padding-top: 2rem;
         }
         .dark-mode {
-            background-color: #584723 !important;
+            background-color: #8f7339 !important;
             color: #f5f0e6 !important;
         }
     </style>
