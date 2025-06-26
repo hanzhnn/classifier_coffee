@@ -16,8 +16,8 @@ st.set_page_config(
 
 @st.cache_resource
 def load_model_from_url():
-    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.h5"
-    model_path = "coffee_leaf_model.h5"
+    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/best_model.keras"
+    model_path = "best_model.keras"
     
     if not os.path.exists(model_path):
         with requests.get(model_url, stream=True) as r:
