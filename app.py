@@ -10,6 +10,13 @@ from keras.preprocessing.image import img_to_array
 from PIL import Image
 import matplotlib.cm as cm
 
+# Set Streamlit page config
+st.set_page_config(
+    page_title="Coffee Leaf Disease Classifier ☕🌿",
+    layout="centered",
+    initial_sidebar_state="expanded"
+)
+
 @st.cache_resource
 def load_model_from_url():
     model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
@@ -23,14 +30,6 @@ def load_model_from_url():
 
 model = load_model_from_url()
 class_names = ['Healthy', 'Rust', 'Phoma', 'Cercospora', 'Miner']
-
-
-# Set Streamlit page config
-st.set_page_config(
-    page_title="Coffee Leaf Disease Classifier ☕🌿",
-    layout="centered",
-    initial_sidebar_state="expanded"
-)
 
 # Add custom CSS for aesthetics
 st.markdown("""
@@ -117,5 +116,4 @@ if uploaded_file:
     superimposed = heatmap_colored * 0.4 + np.array(img_resized) / 255.0
     st.subheader("🔬 Grad-CAM Heatmap")
     st.image(np.clip(superimposed, 0.0, 1.0), caption="Model focus region", use_column_width=True)
-
 
