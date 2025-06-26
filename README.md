@@ -21,7 +21,7 @@ This app is ready to deploy on [Streamlit Cloud](https://streamlit.io/cloud).
 ## Model
 Place your trained model file here:
 ```
-/model/coffee_leaf_model.h5
+/model/best_model.keras
 ```
 
 ---
