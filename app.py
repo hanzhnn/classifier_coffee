@@ -17,8 +17,8 @@ st.set_page_config(
 @st.cache_resource
 def load_model_from_url():
     from keras.layers import Rescaling, Normalization, RandomFlip, RandomRotation, RandomZoom, RandomContrast
-    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
-    model_path = "coffee_leaf_model.keras"
+    model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.h5"
+    model_path = "coffee_leaf_model.h5"
     if not os.path.exists(model_path):
         with requests.get(model_url, stream=True) as r:
             with open(model_path, 'wb') as f:
