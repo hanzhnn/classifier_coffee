@@ -16,6 +16,7 @@ st.set_page_config(
 
 @st.cache_resource
 def load_model_from_url():
+    from keras.layers import Normalization, Rescaling, RandomFlip, RandomRotation
     model_url = "https://huggingface.co/hanzhnn/coffee-leaf-classifier/resolve/main/coffee_leaf_model.keras"
     model_path = "coffee_leaf_model.keras"
     if not os.path.exists(model_path):
@@ -23,7 +24,12 @@ def load_model_from_url():
             with open(model_path, 'wb') as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
-    return tf.keras.models.load_model(model_path)
+    return tf.keras.models.load_model(model_path, custom_objects={
+        'Normalization': Normalization,
+        'Rescaling': Rescaling,
+        'RandomFlip': RandomFlip,
+        'RandomRotation': RandomRotation
+    })
 
 model = load_model_from_url()
 class_names = ['Healthy', 'Rust', 'Phoma', 'Cercospora', 'Miner']
